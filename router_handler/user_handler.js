@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('../config')
 const fs = require('fs')
+const path = require('path')
 
 exports.register = (req, res) => {
     //use formidable to parse form data received from frond end
@@ -33,7 +34,10 @@ exports.register = (req, res) => {
                             return res.cc("failed to register")
                         }
                         else {
-                            fs.copyFileSync(files.img.filepath,`D:/Mycode/myapp01_node/public/${files.img.originalFilename}`,0,(err) => {
+                            let rootPath = path.resolve(__dirname,'..')
+                            let myPath = path.join(rootPath,'/public',files.img.originalFilename)
+                            console.log(myPath)
+                            fs.copyFileSync(files.img.filepath,myPath,0,(err) => {
                                 if (err) throw err;
                             })
                             return res.cc("registered", 0)
