@@ -1,4 +1,4 @@
 module.exports = {
     jwtSecretKey:"whitealbum",
-    expiresIn:"1h"
+    expiresIn:"1h",
 }
