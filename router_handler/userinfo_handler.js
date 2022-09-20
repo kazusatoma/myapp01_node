@@ -1,7 +1,7 @@
 const db = require('../db/index')
 
 exports.getUserInfo = (req, res) => {
-    const sql = 'select id, username, nickname, email , avatar from users where id=?'
+    const sql = 'select id, username , avatar from users where id=?'
     db.query(sql, req.user.id, (err, result) => {
         if(err) return res.cc(err)
 
